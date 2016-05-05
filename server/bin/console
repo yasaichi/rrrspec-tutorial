@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "rrrspec/server"
+require "pry"
+
+config_files = [File.expand_path("../../config/master.rb", __FILE__)]
+RRRSpec.setup(RRRSpec::Server::ServerConfiguration.new, config_files)
+ActiveRecord::Base.establish_connection(**RRRSpec.configuration.persistence_db)
+
+Pry.start

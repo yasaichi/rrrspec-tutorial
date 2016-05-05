@@ -4,3 +4,9 @@ gem "mysql2"
 gem "rrrspec-server", "0.4.3"
 gem "rrrspec-web", "0.4.3"
 gem "unicorn"
+
+# For debugging
+group :development do
+  gem "pry"
+  gem "pry-coolline"
+end
