@@ -1,0 +1,19 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8mb4
+  charset: utf8mb4
+  collation: utf8mb4_general_ci
+  reconnect: false
+  pool: 5
+
+development:
+  <<: *default
+  database: rrrspec_development
+  username: root
+
+production:
+  <<: *default
+  host: <%= ENV["RRRSPEC_DATABASE_HOST"] %>
+  database: <%= ENV["RRRSPEC_DATABASE_NAME"] %>
+  username: <%= ENV["RRRSPEC_DATABASE_USERNAME"] %>
+  password: <%= ENV["RRRSPEC_DATABASE_PASSWORD"] %>
