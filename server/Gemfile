@@ -1,0 +1,6 @@
+source "https://rubygems.org"
+
+gem "mysql2"
+gem "rrrspec-server", "0.4.3"
+gem "rrrspec-web", "0.4.3"
+gem "unicorn"
