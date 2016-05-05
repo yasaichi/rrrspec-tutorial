@@ -1,0 +1,4 @@
+web: bundle exec unicorn -p $PORT
+redis: redis-server
+server: bundle exec rrrspec-server server --config config/master.rb --no-daemonize
+worker: bundle exec rrrspec-server worker --config config/worker.rb --no-daemonize

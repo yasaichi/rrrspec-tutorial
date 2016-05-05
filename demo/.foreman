@@ -1,0 +1,4 @@
+env: .env
+port: 3000
+procfile: Procfile
+root: ../server
