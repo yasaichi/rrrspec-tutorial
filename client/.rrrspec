@@ -1,0 +1,44 @@
+RRRSpec.configure do |config|
+  config.redis = {
+    host: ENV["RRRSPEC_REDIS_HOST"],
+    port: 6379
+  }
+end
+
+RRRSpec.configure(:client) do |config|
+  Time.zone_default = Time.find_zone("Asia/Tokyo")
+
+  config.packaging_dir = File.expand_path("..", __FILE__)
+  config.rsync_remote_path = ENV["RRRSPEC_RSYNC_REMOTE_PATH"]
+  config.rsync_options = %w(
+    --compress
+    --times
+    --recursive
+    --links
+    --perms
+    --inplace
+    --delete
+    --cvs-exclude
+  ).join(" ")
+
+  config.spec_files = lambda do
+    Dir.chdir(config.packaging_dir) do
+      Dir["spec/**{,/*/**}/*_spec.rb"].uniq
+    end
+  end
+
+  config.setup_command = <<-SETUP
+    bundle install
+  SETUP
+
+  config.slave_command = <<-SLAVE
+    bundle exec rrrspec-client slave
+  SLAVE
+
+  config.taskset_class = File.basename(config.packaging_dir)
+  config.worker_type = "default"
+  config.max_workers = 10
+  config.max_trials = 1
+  config.unknown_spec_timeout_sec = 90
+  config.least_timeout_sec = 60
+end
