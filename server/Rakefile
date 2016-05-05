@@ -1,0 +1,7 @@
+require "bundler/setup"
+
+ENV["RACK_ENV"] = ENV["RRRSPEC_ENV"]
+ENV["RRRSPEC_CONFIG_FILES"] = File.expand_path("../config/master.rb", __FILE__)
+
+load "#{Gem::Specification.find_by_name('rrrspec-server').gem_dir}/tasks/db.rake"
+load "#{Gem::Specification.find_by_name('rrrspec-web').gem_dir}/tasks/assets.rake"
