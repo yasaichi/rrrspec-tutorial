@@ -1,5 +1,7 @@
 # rrrspec-tutorial
-TODO: Write a project description
+Learn how to set up [RRRSpec](https://github.com/cookpad/rrrspec).  
+NOTE: This tutorial is written for [the August 2016 issue of Software Design](http://gihyo.jp/magazine/SD/archive/2016/201608) 
+published by Gijutsu-Hyohron Co., Ltd.
 
 ## Tutorial
 Proceed with the following steps:
